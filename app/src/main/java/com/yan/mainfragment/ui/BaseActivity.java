@@ -1,4 +1,4 @@
-package com.yan.mainfragment;
+package com.yan.mainfragment.ui;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -6,20 +6,21 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
+import com.yan.mainfragment.R;
 import com.yan.mainfragment.fragment.FragmentOne;
 import com.yan.mainfragment.view.CustomViewPager;
 import com.yan.mainfragment.view.ViewPagerIndicator;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
-
-    private CustomViewPager viewPager;
-    private ViewPagerIndicator<TextView> pagerIndicator;
-    private ArrayList<Fragment> fragList = new ArrayList<>();
+/**
+ * Created by Administrator on 2016/1/12.
+ */
+public class BaseActivity<T extends View> extends AppCompatActivity {
+    protected CustomViewPager viewPager;
+    protected ViewPagerIndicator<T> pagerIndicator;
+    protected ArrayList<Fragment> fragList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,29 +59,9 @@ public class MainActivity extends AppCompatActivity {
      */
     private void iniView() {
         viewPager = (CustomViewPager) findViewById(R.id.viewPager);
-        setAdapter();
         pagerIndicator = (ViewPagerIndicator) findViewById(R.id.custome_vp);
-        pagerIndicator.setViewPager(viewPager);
-        setIndicatorView();
-        pagerIndicator.setViewList(R.layout.header);
-        pagerIndicator.setOnSelectChangeViewListener(new ViewPagerIndicator.OnSelectListener<TextView>() {
-            @Override
-            public void onSelected(int position, TextView slectedView, TextView lastSelected) {
-                slectedView.setTextColor(Color.RED);
-                lastSelected.setTextColor(Color.GRAY);
-            }
-        });
-    }
-
-    /***
-     * @return 设置指示器
-     */
-    private void setIndicatorView() {
-        View view = new View(this);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(50, 20);
-        view.setBackgroundColor(Color.RED);
-        view.setLayoutParams(lp);
-        pagerIndicator.setIndicator(view);
+        pagerIndicator.setViewPager(viewPager).setMarginTop(40).setIndicatorColor(Color.RED).setIndicatorWidth(10);
+        setAdapter();
     }
 
     /***

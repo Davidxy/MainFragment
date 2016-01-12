@@ -12,13 +12,29 @@
         android:text="通话"
         android:textColor="@android:color/holo_red_dark" />
 
-    <TextView
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="短信"
-        android:textColor="@android:color/darker_gray" />
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:id="@+id/iv_image"
+            android:src="@mipmap/ic_launcher"
+            android:tint="@android:color/darker_gray"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center_vertical"
+            android:text="短信"
+            android:textSize="10sp"
+            android:textColor="@android:color/darker_gray" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="fill_parent"
