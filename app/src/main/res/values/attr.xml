@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-
+    <declare-styleable name="CountTextView">
+        <attr name="android:textColor" />
+    </declare-styleable>
+    <declare-styleable name="TitleImageView">
+        <attr name="need_image" format="boolean" />
+        <attr name="need_text" format="boolean" />
+        <attr name="isRight" format="boolean" />
+        <attr name="android:textColor" />
+        <attr name="android:tint" />
+        <attr name="android:text" />
+    </declare-styleable>
 </resources>

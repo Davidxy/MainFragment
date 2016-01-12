@@ -17,7 +17,7 @@ public class VariousViewActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        pagerIndicator.setViewList(R.layout.varios_header);
+        pagerIndicator.setViewList(R.layout.header_various);
         pagerIndicator.setOnSelectChangeViewListener(new ViewPagerIndicator.OnSelectListener<View>() {
             @Override
             public void onSelected(int position, View slectedView, View lastSelected) {

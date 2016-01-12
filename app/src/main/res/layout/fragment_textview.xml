@@ -1,13 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.yan.mainfragment.view.CustomerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="20sp" />
-</com.yan.mainfragment.view.CustomerLayout>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="指示器上的颜色不同"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/btn_various_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="指示器上字体大小不同,颜色不同" />
+
+    <Button
+        android:id="@+id/btn_various_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="指示器上控件不同" />
+
+    <Button
+        android:id="@+id/btn_normal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="常规解决方法:组合控件" />
+
+    <Button
+        android:id="@+id/btn_abnormal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="怎么高兴怎么来:组合控件" />
+</LinearLayout>

@@ -17,6 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.VariousViewActivity" />
+        <activity android:name=".ui.TextSizeActivity" />
+        <activity android:name=".ui.MessageCountActivity" />
+        <activity android:name=".ui.WhatYourLoveActivity" />
     </application>
 
 </manifest>
