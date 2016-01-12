@@ -1,6 +1,8 @@
 package com.yan.mainfragment.view;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Point;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -50,6 +52,10 @@ public class ViewPagerIndicator<T extends View> extends LinearLayout {
      * 指示器的宽度,指示器的高度
      **/
     private int indicatorWidth, indicatorHeight;
+    /****
+     * 用户如果不设置mIndicatorView,需要手动绘制滚动条
+     */
+    private Paint mPaint;
 
     public ViewPagerIndicator(Context context) {
         super(context);
@@ -139,6 +145,12 @@ public class ViewPagerIndicator<T extends View> extends LinearLayout {
         this.addView(mIndicator);
     }
 
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+
+    }
+
     /****
      * @return 设置选择的监听事件
      */
@@ -157,7 +169,7 @@ public class ViewPagerIndicator<T extends View> extends LinearLayout {
                 //onLayout(0,);
                 int scolleWidth = (int) (childWidth * positionOffset);
                 mIndicator.layout(dip2px(30), childWidth - indicatorWidth, dip2px(30) + childWidth, scolleWidth + childWidth * position);
-                Log.v("mine", dip2px(30) + ":" + scolleWidth + childWidth * position + ":" + dip2px(30) + ":" + scolleWidth + childWidth * position);
+                Log.v("mine", dip2px(30) + ":" + (childWidth - indicatorWidth) + ":" + (dip2px(30) + childWidth) + ":" + (scolleWidth + childWidth * position));
             }
 
             @Override

@@ -28,7 +28,7 @@ public class CustomerLayout extends LinearLayout {
         super.onFinishInflate();
         for (int i=0;i<getChildCount();i++){
             View view=getChildAt(i);
-            view.layout(100,100,300,300);
+            view.layout(300,300,500,500);
         }
     }
 }
