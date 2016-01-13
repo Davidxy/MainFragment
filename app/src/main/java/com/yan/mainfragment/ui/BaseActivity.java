@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.yan.mainfragment.R;
@@ -39,6 +41,30 @@ public class BaseActivity<T extends View> extends AppCompatActivity {
         fragList.add(getFragment("第三"));
         fragList.add(getFragment("第四"));
         fragList.add(getFragment("第五"));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_picture:
+                pagerIndicator.setBitmapRes(R.mipmap.icon_jindu).setType(ViewPagerIndicator.TYPE.PICTURE);
+                break;
+            case R.id.menu_ren:
+                pagerIndicator.setMarginTop(49).setIndicatorHeight(1).setIndicatorWidth(25).setIndicatorColor(Color.RED);
+                pagerIndicator.setType(ViewPagerIndicator.TYPE.RECTANGLE);
+                break;
+            case R.id.menu_tri:
+                pagerIndicator.setMarginTop(40).setIndicatorHeight(10).setIndicatorWidth(15).setIndicatorColor(getResources().getColor(R.color.holo_blue_light));
+                pagerIndicator.setType(ViewPagerIndicator.TYPE.TRIANGLE);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     /***

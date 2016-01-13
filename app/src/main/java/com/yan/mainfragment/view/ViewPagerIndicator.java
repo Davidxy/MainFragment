@@ -17,8 +17,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 
-import com.yan.mainfragment.R;
-
 import java.util.ArrayList;
 
 /****
@@ -75,7 +73,7 @@ public class ViewPagerIndicator<T extends View> extends LinearLayout {
     /***
      * @return 设置指示器的类型
      */
-    private int type = 2;
+    private int type;
 
     private Bitmap bitmap;
 
@@ -107,9 +105,26 @@ public class ViewPagerIndicator<T extends View> extends LinearLayout {
     public ViewPagerIndicator(Context context, AttributeSet attrs) {
         super(context, attrs);
         iniPaint();
-        bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.icon_header);
-        indicatorWidth=bitmap.getWidth();
-        indicatorHeight=bitmap.getHeight();
+
+    }
+
+    /***
+     * @return 设置图片
+     */
+    public ViewPagerIndicator<T> setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
+        return this;
+
+    }
+
+    /***
+     * @return 设置图片资源
+     */
+    public ViewPagerIndicator<T> setBitmapRes(int res) {
+        bitmap = BitmapFactory.decodeResource(getResources(), res);
+        indicatorWidth = bitmap.getWidth();
+        indicatorHeight = bitmap.getHeight();
+        return this;
     }
 
     /***
@@ -124,7 +139,7 @@ public class ViewPagerIndicator<T extends View> extends LinearLayout {
      * @return 设置指示器的高度
      */
     public ViewPagerIndicator<T> setIndicatorHeight(int indicatorHeight) {
-        if (type==TYPE.PICTURE)return this;
+        if (type == TYPE.PICTURE) return this;
         this.indicatorHeight = dip2px(indicatorHeight);
         return this;
     }
@@ -133,7 +148,7 @@ public class ViewPagerIndicator<T extends View> extends LinearLayout {
      * @return 设置指示器的宽度
      */
     public ViewPagerIndicator<T> setIndicatorWidth(int indicatorWidth) {
-        if (type==TYPE.PICTURE)return this;
+        if (type == TYPE.PICTURE) return this;
         this.indicatorWidth = dip2px(indicatorWidth);
         return this;
     }
@@ -214,6 +229,12 @@ public class ViewPagerIndicator<T extends View> extends LinearLayout {
         }
     }
 
+    public ViewPagerIndicator<T> setType(int type) {
+        this.type = type;
+        invalidate();
+        return this;
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -221,12 +242,14 @@ public class ViewPagerIndicator<T extends View> extends LinearLayout {
             canvas.drawRect((childWidth - indicatorWidth) / 2 + scrollWidth, marginTop, (childWidth - indicatorWidth) / 2 + indicatorWidth + scrollWidth, marginTop + indicatorHeight, mPaint);
         else if (type == TYPE.TRIANGLE) {
             Path path = new Path();
-            path.lineTo((childWidth - indicatorWidth) / 2 + scrollWidth, marginTop + indicatorHeight);
+            //moveTo,lineTo
+            path.moveTo((childWidth - indicatorWidth) / 2 + scrollWidth, marginTop + indicatorHeight);
             path.lineTo((childWidth + indicatorWidth) / 2 + scrollWidth, marginTop + indicatorHeight);
             path.lineTo(childWidth / 2 + scrollWidth, marginTop);
             canvas.drawPath(path, mPaint);
         } else if (type == TYPE.PICTURE) {
-            canvas.drawBitmap(bitmap, (childWidth - indicatorWidth) / 2 + scrollWidth, marginTop, mPaint);
+            if (bitmap != null)
+                canvas.drawBitmap(bitmap, (childWidth - indicatorWidth) / 2 + scrollWidth, marginTop, mPaint);
         }
 
 

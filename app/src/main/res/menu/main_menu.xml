@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_ren"
+        android:title="长方形"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_tri"
+        android:title="三角形"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_picture"
+        android:title="图片"
+        app:showAsAction="never" />
+</menu>
