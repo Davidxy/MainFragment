@@ -97,6 +97,14 @@ public class ViewPagerIndicator<T extends View> extends LinearLayout {
         iniPaint();
     }
 
+    /***
+     * @return 得到对应位置上的view
+     */
+    public T getView(int poition) {
+        if (viewList == null || viewList.isEmpty()) return null;
+        return viewList.get(poition);
+    }
+
     public ViewPagerIndicator(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         iniPaint();
